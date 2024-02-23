@@ -2,8 +2,7 @@
 import { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function App() {
@@ -42,8 +41,7 @@ function App() {
         if((+num1) >= (+num2)) {
           setResult(num1 - num2);
       } else {
-          toast.warning("Number 1 must be larger than Number 2");
-          setResult("");
+          setResult("Number 1 must be larger than Number 2");
         
       }
       }
