@@ -86,8 +86,9 @@ function App() {
   }
 
     return (
-      <div className="App card ">
-        <div className="col-md-4 mx-auto card-body p-5 shadow">
+      <div className='row vh-100 justify-content-center align-items-center' >
+      <div className="card">
+        <div className="col-md-4 mx-auto card-body p-5 shadow ">
           <h2 className='center text-primary'>Sum Calculator</h2>
             <div>
               <label>Number 1</label>
@@ -130,6 +131,7 @@ function App() {
               <h5>Result : {result} </h5>
             </div>
         </div>
+      </div>
       </div>
 
     );
