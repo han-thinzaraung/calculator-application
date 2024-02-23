@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -40,7 +42,9 @@ function App() {
         if((+num1) >= (+num2)) {
           setResult(num1 - num2);
       } else {
-          setResult("First Number must be greater than Second Number");
+          toast.warning("Number 1 must be larger than Number 2");
+          setResult("");
+        
       }
       }
     }
@@ -72,18 +76,24 @@ function App() {
           {
               setResult(num1/num2);
           } else {
-              setResult("Divider not be Zero");
+              setResult("Divider must not be Zero");
           }
       }
   
 }
+
+
+  const inputMustNum = (e) =>  {
+    if(!(/[0-9]+/.test(e.key)) && (e.key !== "Backspace")) e.preventDefault();
+  }
+
     return (
       <div className="App card ">
         <div className="col-md-4 mx-auto card-body p-5 shadow">
           <h2 className='center text-primary'>Sum Calculator</h2>
             <div>
               <label>Number 1</label>
-              <input type='text' placeholder='Enter Number 1' value={num1} 
+              <input type='text' placeholder='Enter Number 1' value={num1} onKeyDown={inputMustNum}
               onChange={(e) => {
                 setNum1(e.target.value)
                 setError({...error, first : false})
@@ -94,7 +104,7 @@ function App() {
             </div>
             <div>
               <label>Number 2</label>
-              <input type='text' placeholder='Enter Number 2' value={num2} 
+              <input type='text' placeholder='Enter Number 2' value={num2} onKeyDown={inputMustNum}
               onChange={(e) => {
                 setNum2(e.target.value)
                 setError({...error, second : false})
